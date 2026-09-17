@@ -33,12 +33,12 @@ jobs:
           codesign --force --deep -s - 月伴.app
 
       - name: 打包
-        run: ditto -c -k --sequesterRsrc --keepParent 月伴.app 月伴-Mac版.zip
+        run: ditto -c -k --sequesterRsrc --keepParent 月伴.app Yueban-Mac.zip
 
       - name: 发布
         uses: softprops/action-gh-release@v2
         with:
-          files: 月伴-Mac版.zip
+          files: Yueban-Mac.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

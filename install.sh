@@ -12,7 +12,7 @@ set -euo pipefail
 
 REPO="${YUEBAN_REPO:-xingqiyi-97/yueban}"
 APP="月伴.app"
-ZIP="月伴-Mac版.zip"
+ZIP="Yueban-Mac.zip"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 

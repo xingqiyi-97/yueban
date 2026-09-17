@@ -22,7 +22,7 @@ curl -fsSL https://raw.githubusercontent.com/xingqiyi-97/yueban/main/install.sh 
 
 ### 方式二：手动下载
 
-1. 到 [Releases](https://github.com/xingqiyi-97/yueban/releases) 下载 `月伴-Mac版.zip`
+1. 到 [Releases](https://github.com/xingqiyi-97/yueban/releases) 下载 `Yueban-Mac.zip`
 2. 解压，把 `月伴.app` 拖进「应用程序」
 3. 首次打开：右键图标 → 「打开」→ 再点「打开」
 
