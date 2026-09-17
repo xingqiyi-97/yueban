@@ -1,0 +1,19 @@
+# 构建产物
+.build/
+Yueban
+*.o
+build_errors.log
+
+# App 捆绑包（发布时用 GitHub Actions 生成，不入库）
+月伴.app/
+月伴.zip
+dist/
+
+# 图标中间产物（AppIcon.icns 是最终产物，需要入库）
+AppIcon.iconset/
+
+# 本地预览图（正式截图放 docs/screenshots）
+preview/
+
+# macOS
+.DS_Store

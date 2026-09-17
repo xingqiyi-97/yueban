@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 编译通用二进制（Apple 芯片 + Intel）
+        run: |
+          set -e
+          mkdir -p .build
+          swiftc -O -swift-version 5 -target arm64-apple-macosx11.0  main.swift -o .build/Yueban_arm64
+          swiftc -O -swift-version 5 -target x86_64-apple-macosx11.0 main.swift -o .build/Yueban_x86_64
+          lipo -create -output .build/Yueban .build/Yueban_arm64 .build/Yueban_x86_64
+          lipo -info .build/Yueban
+
+      - name: 组装 月伴.app
+        run: |
+          set -e
+          mkdir -p 月伴.app/Contents/MacOS 月伴.app/Contents/Resources
+          cp .build/Yueban 月伴.app/Contents/MacOS/Yueban
+          cp Info.plist   月伴.app/Contents/Info.plist
+          cp AppIcon.icns 月伴.app/Contents/Resources/AppIcon.icns
+          codesign --force --deep -s - 月伴.app
+
+      - name: 打包
+        run: ditto -c -k --sequesterRsrc --keepParent 月伴.app 月伴-Mac版.zip
+
+      - name: 发布
+        uses: softprops/action-gh-release@v2
+        with:
+          files: 月伴-Mac版.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
