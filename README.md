@@ -117,9 +117,12 @@ Info.plist          App 配置
 build.sh            本地构建（默认通用二进制）
 install.sh          别人一键安装用的脚本
 AppIcon.icns        应用图标
+docs/HANDOVER.md    交接文档：架构、算法、踩坑清单、可复用的 prompt
 ```
 
 单文件 Swift + AppKit，没有第三方依赖。
+
+> 想接手改代码或二次开发？直接看 **[交接文档 docs/HANDOVER.md](docs/HANDOVER.md)**，里面有模块索引、周期算法、发布流程和现成的 prompt 模板。
 
 ---
 
